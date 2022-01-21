@@ -54,16 +54,32 @@ def IDtoBusTimes(ID):
             BusNum = o["trip"]["route"]["shortName"]
                 
             Arrival = time.strftime('%H:%M', time.gmtime(int(o["realtimeArrival"])))
-            BusInfo.append({'BusNum': BusNum, 'BusHeadsign': BusHeadsign, 'Arrival': Arrival, 'ArrivalSeconds': int(o['realtimeArrival'])})
+            ArrivalFloat = float(time.strftime('%H.%M', time.gmtime(int(o["realtimeArrival"]))))
+            BusInfo.append({'BusNum': BusNum, 'BusHeadsign': BusHeadsign, 'Arrival': Arrival, 'ArrivalSeconds': int(o['realtimeArrival']), 'ArrivalFloat': ArrivalFloat})
                 
       
     f.close()
 
-    #Sort the Arrival times
-    def myFunc(e):
-        return e['ArrivalSeconds']
-    BusInfo.sort(key=myFunc)
-    return BusInfo
+    #Sort the Arrival times taking note that at 24:00 it would have not beens sorted    
+    BusInfoSorted = []
+    am = []
+    pm = []
+    for i in BusInfo:
+        if i["ArrivalFloat"] < 24 and i["ArrivalFloat"] > 12:
+            pm.append(i)
+    for i in BusInfo:
+        if i["ArrivalFloat"] >= 0 and i["ArrivalFloat"] <= 12:
+            am.append(i)
+    def sortBy(e):
+        return e['ArrivalFloat']
+    am.sort(key=sortBy)
+    pm.sort(key=sortBy)
+    for i in am:
+        BusInfoSorted.append(i)
+    for i in pm:
+        BusInfoSorted.append(i)
+
+    return BusInfoSorted
 
 #asks for input its either in E1248 or 198248912 or Kaivokatu
 # if argument contains f it formats output
