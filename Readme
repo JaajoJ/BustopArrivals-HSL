@@ -1,7 +1,10 @@
 Python cli script for seeing arrivals for a certain HSL bus stop.
 
+
+
 Arguments:
  -f or f or format for formatted output
+Without argument it prints list in format [{'BusNum': '235N', 'BusHeadsign': 'Elielinaukio', 'Arrival': '05:36', 'ArrivalSeconds': 20160}]. 
 
 Accepts Anything from HSL-pysakit.csv:
 - Bustop id:s
