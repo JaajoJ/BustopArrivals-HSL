@@ -26,7 +26,7 @@ def inputToLongID(userInput):
     for i in rows:
         if userInput in i:
             return i[1], i[2], i[10]
-    return "-1"
+    return "-1", "-1", "-1"
 
 #Example downloadID(1020131)
 def downloadID(ID):
