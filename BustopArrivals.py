@@ -35,7 +35,7 @@ def downloadID(ID):
     os.system(command[0]+str(ID)+command[1])
     f.close()
 
-
+#Uses downloaded json file to get appropriate data
 def IDtoBusTimes(ID):
     f = open("output.json")
 
@@ -69,7 +69,13 @@ def IDtoBusTimes(ID):
 # if argument contains f it formats output
 # if you dont give output it uses already downloaded file
 def main(argument):
-    longID, shortID, busstopName = inputToLongID(input())
+
+    if len(argument) > 2 or "-f" not in argument[1] and "format" not in str(argument[1]) and len(argument) == 1:
+        inputVal = argument[-1]
+    else:
+        inputVal = input()
+    
+    longID, shortID, busstopName = inputToLongID(inputVal)
     if longID == "-1":
         print("Invalid input! Check HSL-pysakit.csv for valid codes or names.")
     else:
@@ -77,7 +83,7 @@ def main(argument):
 
         BusTimes = IDtoBusTimes(longID)
 
-        if "f" in argument: 
+        if "-f" in argument[1] or "format" in str(argument[1]): 
             BusInfo8 = [BusTimes[0], BusTimes[1],BusTimes[2], BusTimes[3], BusTimes[4], BusTimes[5], BusTimes[6], BusTimes[7]]
             
             now = datetime.now()
@@ -94,4 +100,4 @@ def main(argument):
         else:
             print(BusTimes)
             
-main(str(sys.argv))
+main(sys.argv)
