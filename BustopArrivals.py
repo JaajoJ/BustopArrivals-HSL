@@ -124,15 +124,16 @@ def main(argument):
             
             now = datetime.now()
             current_time = now.strftime("%H:%M")
-
+            print("------------------------------------------------------------------------")
             print("{:10}    {:45}      {}\n".format(shortID,busstopName, current_time))
                         
             headlines = "{:10}    {:45}   {}".format("Bussi","Suunta","Kellonaika")
             print(headlines)
-
+            print("------------------------------------------------------------------------")
+            
             for i in BusInfo8:
-                print("{:10}    {:45}      {}".format(i["BusNum"], str(i["BusHeadsign"]), i["Arrival"]))
-
+                print("{:10}    {:45}      {}\n".format(i["BusNum"], str(i["BusHeadsign"]), i["Arrival"]))
+                
         else:
             print(BusTimes)
             
