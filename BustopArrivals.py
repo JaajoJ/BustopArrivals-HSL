@@ -69,10 +69,22 @@ def IDtoBusTimes(ID):
 # if argument contains f it formats output
 # if you dont give output it uses already downloaded file
 def main(argument):
+    Format = False
+    if len(argument)>1:
+        if len(argument) > 2 :
+            inputVal = argument[-1]
+            
 
-    if len(argument) > 2 or "-f" not in argument[1] and "format" not in str(argument[1]) and len(argument) == 1:
-        inputVal = argument[-1]
+        elif "-f" not in argument[1] and "format" not in str(argument[1]) and len(argument) == 2:
+            inputVal = argument[-1]
+        
+        else:
+            inputVal=input()
+            
+        if "-f" in argument[1] or "format" in argument[1]:
+                Format = True
     else:
+        
         inputVal = input()
     
     longID, shortID, busstopName = inputToLongID(inputVal)
@@ -83,7 +95,7 @@ def main(argument):
 
         BusTimes = IDtoBusTimes(longID)
 
-        if "-f" in argument[1] or "format" in str(argument[1]): 
+        if Format == True: 
             BusInfo8 = [BusTimes[0], BusTimes[1],BusTimes[2], BusTimes[3], BusTimes[4], BusTimes[5], BusTimes[6], BusTimes[7]]
             
             now = datetime.now()

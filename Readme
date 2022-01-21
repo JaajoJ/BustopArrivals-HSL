@@ -3,9 +3,10 @@ Linux Python cli script for seeing arrivals for a certain HSL bus stop.
 
 
 Arguments:
- -f or format for formatted output
-Without argument it prints list in format [{'BusNum': '235N', 'BusHeadsign': 'Elielinaukio', 'Arrival': '05:36', 'ArrivalSeconds': 20160}]. 
-Wanted bustop can be given as an argument. Look last example.
+ - f or format for formatted output
+ - Without argument it prints list in format [{'BusNum': '235N', 'BusHeadsign': 'Elielinaukio', 'Arrival': '05:36', 'ArrivalSeconds': 20160}]. 
+ - Wanted bustop can be given as an argument. Look last example.
+ - Notice that not all arguments as HSL netapi doesnt work for every stop. It is prompted when gzip unsuccesfully formats the data. 
 
 Accepts Anything from HSL-pysakit.csv:
 - Bustop id:s
@@ -44,6 +45,7 @@ Input:
 Output:
 >[{'BusNum': '235N', 'BusHeadsign': 'Elielinaukio', 'Arrival': '05:36', 'ArrivalSeconds': 20160}, {'BusNum': '321', 'BusHeadsign': 'Elielinaukio', 'Arrival': '05:38', 'ArrivalSeconds': 20280}, {'BusNum': '345N', 'BusHeadsign': 'Elielinaukio', 'Arrival': '05:53', 'ArrivalSeconds': 21180}, {'BusNum': '231N', 'BusHeadsign': 'Elielinaukio', 'Arrival': '05:53', 'ArrivalSeconds': 21180}, {'BusNum': '411', 'BusHeadsign': 'Elielinaukio', 'Arrival': '06:04', 'ArrivalSeconds': 21840}, {'BusNum': '235N', 'BusHeadsign': 'Elielinaukio', 'Arrival': '06:05', 'ArrivalSeconds': 21900}, {'BusNum': '332', 'BusHeadsign': 'Elielinaukio', 'Arrival': '06:09', 'ArrivalSeconds': 22140}, {'BusNum': '431N', 'BusHeadsign': 'Elielinaukio', 'Arrival': '06:20', 'ArrivalSeconds': 22800}, {'BusNum': '322', 'BusHeadsign': 'Elielinaukio', 'Arrival': '06:25', 'ArrivalSeconds': 23100}, {'BusNum': '436', 'BusHeadsign': 'Elielinaukio', 'Arrival': '06:32', 'ArrivalSeconds': 23520}, {'BusNum': '321', 'BusHeadsign': 'Elielinaukio', 'Arrival': '06:41', 'ArrivalSeconds': 24060}, {'BusNum': '415', 'BusHeadsign': 'Elielinaukio', 'Arrival': '06:54', 'ArrivalSeconds': 24840}, {'BusNum': '345N', 'BusHeadsign': 'Elielinaukio', 'Arrival': '06:56', 'ArrivalSeconds': 24960}, {'BusNum': '411', 'BusHeadsign': 'Elielinaukio', 'Arrival': '07:11', 'ArrivalSeconds': 25860}, {'BusNum': '332', 'BusHeadsign': 'Elielinaukio', 'Arrival': '07:12', 'ArrivalSeconds': 25920}, {'BusNum': '322', 'BusHeadsign': 'Elielinaukio', 'Arrival': '07:27', 'ArrivalSeconds': 26820}, {'BusNum': '436', 'BusHeadsign': 'Elielinaukio', 'Arrival': '07:29', 'ArrivalSeconds': 26940}, {'BusNum': '421', 'BusHeadsign': 'Elielinaukio', 'Arrival': '07:41', 'ArrivalSeconds': 27660}, {'BusNum': '321', 'BusHeadsign': 'Elielinaukio', 'Arrival': '07:42', 'ArrivalSeconds': 27720}, {'BusNum': '415', 'BusHeadsign': 'Elielinaukio', 'Arrival': '07:54', 'ArrivalSeconds': 28440}, {'BusNum': ...
 
+-----------------------------------------------------------------------------------------
 
 Input:
 >python3 BustopArrivals.py -f Elielinaukio
