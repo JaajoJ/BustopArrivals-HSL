@@ -20,7 +20,7 @@ Accepts Anything from HSL-pysakit.csv:
 Example usage:
 
 Input:
->python3 BustopArrivals.py f
+>python3 BustopArrivals.py -f
 >H2028
 
 Output:
