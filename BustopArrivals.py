@@ -64,12 +64,17 @@ def IDtoBusTimes(ID):
     BusInfoSorted = []
     am = []
     pm = []
+    now = datetime.now()
+    curTime = float(now.strftime("%H.%M"))
     for i in BusInfo:
         if i["ArrivalFloat"] < 24 and i["ArrivalFloat"] > 12:
-            pm.append(i)
+            if i["ArrivalFloat"] > curTime:
+                pm.append(i)
     for i in BusInfo:
         if i["ArrivalFloat"] >= 0 and i["ArrivalFloat"] <= 12:
-            am.append(i)
+            if i["ArrivalFloat"] > curTime:
+                am.append(i)
+
     def sortBy(e):
         return e['ArrivalFloat']
     am.sort(key=sortBy)
@@ -111,8 +116,11 @@ def main(argument):
 
         BusTimes = IDtoBusTimes(longID)
 
-        if Format == True: 
-            BusInfo8 = [BusTimes[0], BusTimes[1],BusTimes[2], BusTimes[3], BusTimes[4], BusTimes[5], BusTimes[6], BusTimes[7]]
+        if Format == True:
+            if len(BusTimes) < 8:
+                BusInfo8 = BusTimes
+            else:
+                BusInfo8 = [BusTimes[0], BusTimes[1],BusTimes[2], BusTimes[3], BusTimes[4], BusTimes[5], BusTimes[6], BusTimes[7]]
             
             now = datetime.now()
             current_time = now.strftime("%H:%M")
