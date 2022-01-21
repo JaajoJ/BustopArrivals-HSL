@@ -19,16 +19,20 @@ Input:
 >H2028
 
 Output:
+>H2020            Elielinaukio                                               22:27                                             
+
 >Bussi            Suunta                                                     Kellonaika                                        
->436              Kalajärvi                                                  05:50                                             
->436              Kalajärvi                                                  06:50                                             
->436              Kalajärvi                                                  07:36                                             
->436              Kalajärvi                                                  08:36                                             
->436              Kalajärvi                                                  09:33                                             
->436              Kalajärvi                                                  10:32                                             
->436              Kalajärvi                                                  22:48                                             
->436              Kalajärvi                                                  23:50
+>235N             Elielinaukio                                               05:36                                             
+>321              Elielinaukio                                               05:38                                             
+>200              Elielinaukio                                               05:44                                             
+>345N             Elielinaukio                                               05:53                                             
+>231N             Elielinaukio                                               05:53                                             
+>411              Elielinaukio                                               06:04                                             
+>235N             Elielinaukio                                               06:05                                             
+>332              Elielinaukio                                               06:09
+
 -----------------------------------------------------------------------------------------
+
 Input:
 >python3 BustopArrivals.py
 >Elielinaukio
@@ -40,5 +44,5 @@ Output:
 
 
 
-HSL-pysakit.csv is licensed under licensed under Creative Commons BY 4.0 International Licence -> https://creativecommons.org/licenses/by/4.0/deed.en 
+HSL-pysakit.csv is licensed under Creative Commons BY 4.0 International Licence -> https://creativecommons.org/licenses/by/4.0/deed.en 
 And was downloaded from official sources from hsl.fi open-data service
