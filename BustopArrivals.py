@@ -39,34 +39,24 @@ def downloadID(ID):
 def IDtoBusTimes(ID):
     f = open("output.json")
 
-
     data = json.load(f)
 
     BusInfo = []
     #For metros and train stations 
+    stopType = "stops"
     if "stations" in data["data"]:
-        for i in data["data"]["stations"][0]["stoptimesForPatterns"]:
-            BusHeadsign = i["pattern"]["headsign"]
-            for o in i["stoptimes"]:
+        stopType = "stations"
 
+    for i in data["data"][stopType][0]["stoptimesForPatterns"]:
+        BusHeadsign = i["pattern"]["headsign"]
+        for o in i["stoptimes"]:
 
-                BusNum = o["trip"]["route"]["shortName"]
+            BusNum = o["trip"]["route"]["shortName"]
                 
-                Arrival = time.strftime('%H:%M', time.gmtime(int(o["realtimeArrival"])))
-                BusInfo.append({'BusNum': BusNum, 'BusHeadsign': BusHeadsign, 'Arrival': Arrival, 'ArrivalSeconds': int(o['realtimeArrival'])})
+            Arrival = time.strftime('%H:%M', time.gmtime(int(o["realtimeArrival"])))
+            BusInfo.append({'BusNum': BusNum, 'BusHeadsign': BusHeadsign, 'Arrival': Arrival, 'ArrivalSeconds': int(o['realtimeArrival'])})
                 
-    #For busses
-    else:
-        for i in data["data"]["stops"][0]["stoptimesForPatterns"]:
-            BusHeadsign = i["pattern"]["headsign"]
-            for o in i["stoptimes"]:
-
-
-                BusNum = o["trip"]["route"]["shortName"]
-                
-                Arrival = time.strftime('%H:%M', time.gmtime(int(o["realtimeArrival"])))
-                BusInfo.append({'BusNum': BusNum, 'BusHeadsign': BusHeadsign, 'Arrival': Arrival, 'ArrivalSeconds': int(o['realtimeArrival'])})
-                
+      
     f.close()
 
     #Sort the Arrival times
